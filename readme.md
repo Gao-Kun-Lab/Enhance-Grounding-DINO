@@ -3,10 +3,10 @@
 ![Alt text](assets/readme/image.png)
 Here is the code implementation of our lab's paper [**J-STATRS 2025**:*Enhanced Grounding DINO: Efficient Cross-Modality Block for Open-Set Object Detection in Remote Sensing*](https://ieeexplore.ieee.org/abstract/document/11021309). 
 
-Since the senior has graduated, our personal skills and energy are limited, so we have arranged a rough version for your reference. we will rearrange it after we finish our study of mmdetection.
-
 # Codes
 ## 0. Explains
+Since the senior has graduated, our personal skills and energy are limited, so we have arranged a rough version for your reference. we will rearrange it after we finish our study of mmdetection.
+
 PS:To avoid safe problem, we replace real work dir with `"WORK_DIR"` of dataset root and configs! Use `"senior"` replace real username!
 
 ## 1. Prepare Language_model
@@ -16,8 +16,6 @@ You should download bert-base-uncased to `./language_models`, structure like `be
 You can put the individual data sets in `./detection_data` and the data organization directory tree reference file './detection_data/datasets.txt'
 
 ## 3. Environments
-It is recommended to refer to the 'mmdetection' official tutorial after installation, and add `.py` file required by the model according to the actual situation.
-
 Python 3.8.18 NVCC 11.7
 ```bash
 # create env
@@ -42,18 +40,6 @@ pip install -r py38-requirements.txt
 ```
 
 ## 4. Models
-Clone our codes and copy necessary python file.
-
-The main model classes:
-1. [GroundingDINOHead_ref](./mmdetection/mmdet/models/dense_heads/grounding_dino_head_ref.py)
-2. [HungarianAssigner_ref](./mmdetection/mmdet/models/task_modules/assigners/hungarian_assigner_ref.py)
-3. [GroundingDINO_ref_ablation_invert_block](./mmdetection/mmdet/models/detectors/grounding_dino_ref_ablation_invert_block.py)
-
-You can see our experiments' configs in `./mmdetection/configs/grounding_dino_sparse`:
-1. Efficient Grounding DINO:grounding_dino_F3_Decouple_Invert_r50_scratch_8xb2_1x_{Dataset_Name}
-2. Efficient Grounding DINO*:grounding_dino_F3_Decouple_Invert_augment_r50_scratch_8xb2_1x_{Dataset_Name}
-3. `*`stands for data augmentation, consistent with the table of experimental metrics in the paper
-
 You can run our experiments by `./mmdetection/tools/*.sh` and `./mmdetection/configs/grounding_dino_sparse/*.py`
 
 Example:
@@ -74,7 +60,7 @@ CUDA_VISIBLE_DEVICES={GPU_ID_list}  ./tools/dist_train.sh ./configs/grounding_di
 CUDA_VISIBLE_DEVICES={GPU_ID_list}  ./tools/dist_train.sh ./configs/grounding_dino_sparse/grounding_dino_F3_Decouple_Invert_augment_r50_scratch_8xb2_1x_RSVG_HR.py {NUM_GPU}
 
 # Efficient Grounding DINO (with data augmentation)(Finetune) for RSVG_HR
-CUDA_VISIBLE_DEVICES={GPU_ID_list}  ./tools/dist_train.sh ./configs/grounding_dino_sparse/grounding_dino_F3_Decouple_Invert_augment_finetune_r50_scratch_8xb2_1x_RSVG_HR.py
+CUDA_VISIBLE_DEVICES={GPU_ID_list}  ./tools/dist_train.sh ./configs/grounding_dino_sparse/grounding_dino_F3_Decouple_Invert_augment_finetune_r50_scratch_8xb2_1x_RSVG_HR.py {NUM_GPU}
 ```
 
 ## 5. Finally
